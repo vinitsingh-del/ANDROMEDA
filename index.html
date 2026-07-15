@@ -213,23 +213,11 @@
 
   .constellation-line{
     stroke: var(--cyan); stroke-width: 1; fill:none; opacity: 0.55;
-    stroke-dasharray: 900; stroke-dashoffset: 900;
   }
   @media (prefers-reduced-motion: no-preference){
-    .constellation-line{ animation: draw-line-loop 6s ease-in-out infinite; }
+    .constellation-line{ animation: line-glow-pulse 3.6s ease-in-out infinite; }
   }
-  @media (prefers-reduced-motion: reduce){
-    .constellation-line{ animation: draw-line 1s ease forwards; }
-  }
-  @keyframes draw-line{ to{ stroke-dashoffset: 0; } }
-  @keyframes draw-line-loop{
-    0%{ stroke-dashoffset: 900; opacity: 0; }
-    15%{ opacity: 0.6; }
-    45%{ stroke-dashoffset: 0; opacity: 0.6; }
-    70%{ stroke-dashoffset: 0; opacity: 0.6; }
-    92%{ stroke-dashoffset: -900; opacity: 0; }
-    100%{ stroke-dashoffset: -900; opacity: 0; }
-  }
+  @keyframes line-glow-pulse{ 0%,100%{ opacity: 0.35; } 50%{ opacity: 0.8; } }
 
   .star-core{ transform-origin: center; }
   .star-core.gold{ fill: var(--gold); }
@@ -696,7 +684,7 @@
     .nav-cta .btn-primary{ display:none; }
     .menu-btn{ display:inline-flex; }
     .nav-mobile-cta{ display:inline-flex; margin-top:6px; align-self:flex-start; }
-    .hero-grid{ grid-template-columns: 1fr; gap: 8px; }
+    .hero-grid{ grid-template-columns: 1fr; gap: 8px; align-items: flex-start; }
     .constellation-wrap{ height: 300px; order:-1; display:flex; align-items:center; justify-content:center; }
     .stats-row{ grid-template-columns: repeat(2,1fr); }
     .stat-cell:nth-child(2n){ border-right:none; }
@@ -796,9 +784,9 @@
     </div>
 
     <div class="constellation-wrap" id="constellationWrap" aria-hidden="true">
-      <svg viewBox="0 0 480 460">
+      <svg viewBox="15 90 470 380">
         <g class="ambient-group"></g>
-        <path class="constellation-line" d="M 300,120 L 190,260 L 340,300 Z"/>
+        <path class="constellation-line" d="M 120,150 L 300,120 L 340,300 L 230,370 L 190,260 Z"/>
         <circle class="star-core gold" cx="300" cy="120" r="9" style="animation-delay:0s"/>
         <text class="star-label" x="316" y="116"><tspan class="num">25,000+</tspan></text>
         <text class="star-label" x="316" y="132"><tspan class="cap">FINANCIAL ADVISORS</tspan></text>
