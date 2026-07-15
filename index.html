@@ -25,6 +25,12 @@
     --display: 'Space Grotesk', sans-serif;
     --body: 'Inter', sans-serif;
     --mono: 'IBM Plex Mono', monospace;
+    /* unified design tokens */
+    --radius: 16px;
+    --pill: 999px;
+    --card-pad: 24px;
+    --card-pad-mobile: 16px;
+    --section-pad: clamp(56px, 8vw, 88px);
   }
 
   *{ box-sizing: border-box; }
@@ -118,7 +124,7 @@
 
   .btn{
     display:inline-flex; align-items:center; justify-content:center; gap:8px;
-    padding: 12px 22px; border-radius: 8px; font-weight:600; font-size: 0.92rem;
+    padding: 12px 22px; border-radius: var(--radius); font-weight:600; font-size: 0.92rem;
     border: 1px solid transparent; transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
   }
   .btn-primary{ background: var(--cyan); color: var(--navy-deep); }
@@ -242,7 +248,7 @@
 
   /* ---------- REVEAL IMAGE UTILITY ---------- */
   .reveal-media{
-    overflow:hidden; border-radius: 18px; position:relative;
+    overflow:hidden; border-radius: var(--radius); position:relative;
     opacity: 0; transform: translateY(28px);
     transition: opacity 0.9s ease, transform 0.9s cubic-bezier(.16,.8,.24,1);
   }
@@ -268,7 +274,7 @@
   }
 
   /* ---------- SECTION GENERIC ---------- */
-  section{ padding: clamp(56px, 8vw, 88px) 0; }
+  section{ padding: var(--section-pad) 0; }
   .section-head{ max-width: 640px; margin-bottom: 52px; }
   .kicker{
     font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.14em; text-transform:uppercase;
@@ -361,7 +367,7 @@
   .edge-copy p{ color: var(--ink-soft); font-size:1.02rem; line-height:1.65; margin: 0 0 22px; }
 
   .merch-graphic{
-    width:100%; height:100%; border-radius:18px; position:relative; overflow:hidden;
+    width:100%; height:100%; border-radius:var(--radius); position:relative; overflow:hidden;
     background: linear-gradient(155deg, var(--navy-deep) 0%, var(--navy-brand) 62%, var(--blue-mid) 100%);
     display:flex; align-items:flex-end; justify-content:center; padding: 32px 20px 0;
   }
@@ -382,7 +388,7 @@
 
   .featured-three{ display:grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-bottom: 18px; }
   .feature-card{
-    background:#fff; border:1px solid var(--line); border-radius:16px;
+    background:#fff; border:1px solid var(--line); border-radius:var(--radius);
     display:flex; flex-direction:column; overflow:hidden;
     transition: transform 0.25s cubic-bezier(.16,.8,.24,1), box-shadow 0.25s ease-out;
   }
@@ -405,7 +411,7 @@
     background: rgba(4,21,43,0.55); border: 1px solid rgba(255,255,255,0.35);
     border-radius:999px; padding:5px 12px;
   }
-  .feature-body{ padding: 20px 22px 24px; display:flex; flex-direction:column; gap:10px; }
+  .feature-body{ padding: var(--card-pad); display:flex; flex-direction:column; gap:10px; }
   .feature-card .icon-lg{ width:40px; height:40px; color: var(--navy-brand); }
   .feature-card .icon-lg svg{ width:100%; height:100%; }
   .feature-card .fnum{ font-family: var(--mono); font-size:0.72rem; color: var(--blue-mid); letter-spacing:0.08em; }
@@ -414,7 +420,7 @@
 
   .edge-grid{
     display:grid; grid-template-columns: repeat(7, 1fr); gap: 1px;
-    background: var(--line); border: 1px solid var(--line); border-radius: 14px; overflow:hidden;
+    background: var(--line); border: 1px solid var(--line); border-radius: var(--radius); overflow:hidden;
   }
   .edge-item{
     background: #fff; padding: 22px 16px; min-height: 128px;
@@ -455,7 +461,7 @@
   .testi-wrap{ position: relative; display:flex; flex-direction:column; justify-content:center; min-height: 420px; }
   .testi-stack{ position:relative; min-height: 380px; }
   .testi-card{
-    background: #fff; border: 1px solid var(--line); border-radius: 16px;
+    background: #fff; border: 1px solid var(--line); border-radius: var(--radius);
     overflow:hidden; position:absolute; inset:0;
     opacity:0; transform: translateY(6px); pointer-events:none;
     transition: opacity 0.35s ease-out, transform 0.35s cubic-bezier(.16,.8,.24,1);
@@ -470,7 +476,7 @@
     background: linear-gradient(160deg, rgba(4,21,43,0.5) 0%, rgba(0,73,136,0.28) 55%, rgba(3,193,243,0.12) 100%);
     mix-blend-mode: multiply;
   }
-  .testi-body{ padding: 28px 36px 32px; flex:1; display:flex; flex-direction:column; justify-content:center; }
+  .testi-body{ padding: var(--card-pad); flex:1; display:flex; flex-direction:column; justify-content:center; }
   .testi-quote{ font-family: var(--display); font-size: 1.2rem; line-height:1.5; margin: 0 0 22px; color: var(--ink); font-weight:500; }
   .testi-person{ display:flex; align-items:center; gap: 14px; }
   .avatar{
@@ -489,7 +495,7 @@
   .testi-dot.active{ background: var(--navy-brand); }
 
   /* ---------- LENDER MARQUEE ---------- */
-  .lender-section{ background: #fff; padding: clamp(48px, 6vw, 70px) 0; position:relative; overflow:hidden; }
+  .lender-section{ background: #fff; padding: var(--section-pad) 0; position:relative; overflow:hidden; }
   .lender-constellation{ position:absolute; inset:0; z-index:0; opacity:0.5; pointer-events:none; }
   .marquee-stack{ position:relative; z-index:1; display:flex; flex-direction:column; gap:16px; }
   .marquee{
@@ -536,7 +542,7 @@
   /* ---------- AWARDS (photo-topped cards) ---------- */
   .awards-grid{ display:grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
   .award-card{
-    background:#fff; border:1px solid var(--line); border-radius:16px; overflow:hidden;
+    background:#fff; border:1px solid var(--line); border-radius:var(--radius); overflow:hidden;
     display:flex; flex-direction:column; transition: transform 0.25s cubic-bezier(.16,.8,.24,1), box-shadow 0.25s ease-out;
   }
   @media (hover: hover) and (pointer: fine){
@@ -550,7 +556,7 @@
     background: linear-gradient(160deg, rgba(4,21,43,0.55) 0%, rgba(0,73,136,0.3) 55%, rgba(3,193,243,0.14) 100%);
     mix-blend-mode: multiply;
   }
-  .award-body{ padding: 22px 24px 24px; }
+  .award-body{ padding: var(--card-pad); }
   .award-body h4{ font-family: var(--display); font-size:1.05rem; margin:0 0 12px; font-weight:600; }
   .award-list{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:8px; }
   .award-list li{
@@ -574,7 +580,7 @@
   .app-chip-stack{ position:absolute; left:-18px; bottom:36px; z-index:4; width:190px; height:44px; }
   .app-chip{
     position:absolute; inset:0;
-    background:#fff; border-radius:12px; padding:10px 14px;
+    background:#fff; border-radius:var(--radius); padding:10px 14px;
     box-shadow: 0 12px 28px rgba(11,31,53,0.18);
     display:flex; align-items:center; gap:8px; font-size:0.78rem; font-weight:600; color: var(--ink);
     opacity:0;
@@ -600,14 +606,14 @@
   .app-copy p{ color: var(--ink-soft); font-size:1.02rem; line-height:1.65; margin: 0 0 26px; max-width: 46ch; }
   .app-store-row{ display:flex; gap:14px; flex-wrap:wrap; }
   .store-chip{
-    display:flex; align-items:center; gap:10px; border:1px solid var(--line); border-radius:10px;
+    display:flex; align-items:center; gap:10px; border:1px solid var(--line); border-radius:var(--radius);
     padding: 10px 16px; font-size:0.85rem; font-weight:600; background:#fff; color: var(--ink);
   }
 
   /* ---------- NEWS ---------- */
   .news-grid{ display:grid; grid-template-columns: repeat(3,1fr); gap: 22px; }
   .news-card{
-    border: 1px solid var(--line); border-radius: 14px; overflow:hidden; background:#fff;
+    border: 1px solid var(--line); border-radius: var(--radius); overflow:hidden; background:#fff;
     display:flex; flex-direction:column; transition: border-color .15s, transform .15s, box-shadow .15s;
   }
   @media (hover: hover) and (pointer: fine){
@@ -621,17 +627,17 @@
     background: linear-gradient(160deg, rgba(4,21,43,0.5) 0%, rgba(0,73,136,0.28) 55%, rgba(3,193,243,0.12) 100%);
     mix-blend-mode: multiply;
   }
-  .news-body{ padding: 22px 24px 24px; display:flex; flex-direction:column; gap: 12px; }
+  .news-body{ padding: var(--card-pad); display:flex; flex-direction:column; gap: 12px; }
   .news-meta{ font-family: var(--mono); font-size:0.72rem; color: var(--blue-mid); letter-spacing:0.04em; }
   .news-card h3{ font-family: var(--display); font-size: 1.02rem; line-height:1.4; margin:0; font-weight:600; }
   .news-card p{ font-size: 0.88rem; color: var(--ink-soft); line-height:1.5; margin:0; }
   .news-link{ font-size:0.85rem; font-weight:600; color: var(--navy-brand); margin-top:auto; }
 
   /* ---------- FINAL CTA ---------- */
-  .cta-band-wrap{ padding: clamp(56px, 8vw, 90px) 0 clamp(64px, 9vw, 100px); }
+  .cta-band-wrap{ padding-top: clamp(56px, 8vw, 90px); padding-bottom: clamp(64px, 9vw, 100px); }
   .final-cta{
     position:relative; overflow:hidden;
-    color:#fff; border-radius: 24px; padding: 64px 48px; text-align:center;
+    color:#fff; border-radius: var(--radius); padding: 64px 48px; text-align:center;
     display:flex; flex-direction:column; align-items:center; gap: 22px;
   }
   .final-cta-photo{
@@ -704,6 +710,7 @@
     .footer-grid{ grid-template-columns: 1fr 1fr; }
   }
   @media (max-width: 560px){
+    :root{ --card-pad: var(--card-pad-mobile); --section-pad: clamp(40px, 10vw, 56px); }
     .hero{ padding-top: 76px; min-height: 560px; }
     .hero-actions{ flex-direction:column; align-items:stretch; }
     .hero-proof{ gap:18px 26px; }
@@ -810,7 +817,7 @@
       <p>Over &#8377;1.08 lakh crore in loans moves through this network every year &mdash; personal, home, business, and loan against property, sold by advisors like you.</p>
     </div>
   </div>
-  <div class="wrap" style="padding:0;">
+  <div class="wrap">
     <div class="stats-row" id="statsRow">
       <div class="stat-cell"><div class="stat-num">1,500+</div><div class="stat-label">Cities</div></div>
       <div class="stat-cell"><div class="stat-num">500+</div><div class="stat-label">Branches</div></div>
