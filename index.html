@@ -30,7 +30,7 @@
     --pill: 999px;
     --card-pad: 24px;
     --card-pad-mobile: 16px;
-    --section-pad: clamp(56px, 8vw, 88px);
+    --section-pad: clamp(40px, 6vw, 64px);
   }
 
   *{ box-sizing: border-box; }
@@ -175,7 +175,7 @@
     content:''; position:absolute; inset:0; z-index:1;
     background: linear-gradient(100deg, rgba(2,12,26,0.94) 0%, rgba(2,12,26,0.78) 32%, rgba(4,21,43,0.42) 58%, rgba(4,21,43,0.15) 100%);
   }
-  .hero{ min-height: 720px; padding: 96px 0 80px; }
+  .hero{ min-height: 720px; padding: 72px 0 56px; }
   .hero-grid{
     display:grid; grid-template-columns: 1.05fr 0.95fr; gap: 40px; align-items:center;
     position:relative; z-index:2; width:100%;
@@ -204,7 +204,7 @@
     font-size: 1.08rem; line-height:1.6; color: rgba(255,255,255,0.72);
     max-width: 46ch; margin: 0 0 34px;
   }
-  .hero-actions{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom: 40px; }
+  .hero-actions{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom: 28px; }
 
   .hero-proof{
     display:flex; gap: 28px; flex-wrap:wrap;
@@ -283,7 +283,7 @@
 
   /* ---------- SECTION GENERIC ---------- */
   section{ padding: var(--section-pad) 0; }
-  .section-head{ max-width: 640px; margin-bottom: 52px; }
+  .section-head{ max-width: 640px; margin-bottom: 32px; }
   .kicker{
     font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.14em; text-transform:uppercase;
     color: var(--blue-mid); margin-bottom: 14px; display:block;
@@ -304,15 +304,23 @@
     0%, 100%{ text-shadow: 0 0 0 rgba(3,193,243,0); }
     50%{ text-shadow: 0 0 16px rgba(3,193,243,0.45); }
   }
+  .stats .kicker,
+  h1 .accent,
+  .edge-copy .kicker,
+  #stories .kicker,
+  .team-section .kicker{ font-weight:700; }
+
+  .word-reveal{
+    display:inline-block; opacity:0; transform: translateY(14px);
+    animation: word-in 0.55s cubic-bezier(.16,.8,.24,1) forwards;
+  }
+  @keyframes word-in{ to{ opacity:1; transform:translateY(0); } }
+  @media (prefers-reduced-motion: reduce){
+    .word-reveal{ animation:none; opacity:1; transform:none; }
+  }
 
   /* ---------- STATS (dark) ---------- */
-  .stats{
-    background:
-      radial-gradient(ellipse 900px 500px at 15% 0%, rgba(3,193,243,0.10), transparent 60%),
-      radial-gradient(ellipse 700px 500px at 90% 100%, rgba(0,73,136,0.35), transparent 65%),
-      linear-gradient(180deg, var(--navy-deep) 0%, #051a35 100%);
-    color:#fff;
-  }
+  .stats{ background: var(--navy-deep); color:#fff; }
   .stats .kicker{ color: var(--cyan); }
   .stats .section-head p{ color: rgba(255,255,255,0.62); }
   .stats-row{
@@ -490,8 +498,9 @@
     transform: scale(1.08);
   }
   @media (prefers-reduced-motion: no-preference){
-    .unified-stories-card.in .unified-bg{ animation: ken-burns 20s ease-in-out infinite alternate; }
+    .unified-stories-card.in .unified-bg{ animation: unified-zoom 16s ease-in-out infinite alternate; }
   }
+  @keyframes unified-zoom{ from{ transform: scale(1.02); } to{ transform: scale(1.14); } }
   .unified-scrim{
     position:absolute; inset:0;
     background: linear-gradient(180deg, rgba(4,21,43,0.05) 0%, rgba(4,21,43,0.35) 45%, rgba(4,21,43,0.92) 100%);
@@ -544,10 +553,11 @@
   .team-section h2{ animation: none !important; text-shadow: none !important; }
   .team-section .section-head p{ color: rgba(255,255,255,0.65); }
   .team-marquee{
+    max-width: var(--max); margin: 0 auto;
     overflow:hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
     mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
   }
-  .team-track{ display:flex; gap: 22px; width: max-content; animation: scroll-x 30s linear infinite; }
+  .team-track{ display:flex; gap: 22px; width: max-content; animation: scroll-x 30s linear infinite; justify-content:center; }
   .team-marquee:hover .team-track{ animation-play-state: paused; }
   @media (prefers-reduced-motion: reduce){
     .team-marquee{ overflow-x:auto; -webkit-mask-image:none; mask-image:none; }
@@ -728,8 +738,8 @@
   .final-cta p{ color: rgba(255,255,255,0.7); max-width: 46ch; margin:0; }
 
   /* ---------- FOOTER ---------- */
-  footer{ background: var(--navy-deep); color: rgba(255,255,255,0.7); padding: 64px 0 30px; }
-  .footer-grid{ display:grid; grid-template-columns: 1.3fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 48px; }
+  footer{ background: var(--navy-deep); color: rgba(255,255,255,0.7); padding: 48px 0 24px; }
+  .footer-grid{ display:grid; grid-template-columns: 1.3fr 1fr 1fr 1fr; gap: 32px; margin-bottom: 32px; }
   .footer-brand .logo-word{ margin-bottom: 14px; }
   .footer-brand p{ font-size: 0.88rem; line-height:1.6; max-width: 34ch; color: rgba(255,255,255,0.55); }
   .footer-col h4{
@@ -852,7 +862,7 @@
   <div class="wrap hero-grid">
     <div>
       <span class="eyebrow">Since 1991 &middot; Mumbai</span>
-      <h1>A loan network built from <span class="accent">25,000 points of light.</span></h1>
+      <h1 id="heroHeadline" style="animation:none;">A loan network built from <span class="accent">25,000 points of light.</span></h1>
       <p class="hero-sub">Every Andromeda advisor plugs into the same dashboard, the same 180+ lending partners, and the same payout engine. You bring the customer. We handle the rest.</p>
       <div class="hero-actions">
         <a href="#partner" class="btn btn-primary">Partner with Andromeda</a>
@@ -1222,6 +1232,36 @@
     preloaderHidden = true;
     preloader.classList.add('hidden');
   }, 4000); /* safety net, always wins */
+
+  /* one-time word-by-word reveal for the hero headline */
+  (function(){
+    var headline = document.getElementById('heroHeadline');
+    if(!headline) return;
+    var delayStep = 70; /* ms between words */
+    var counter = 0;
+    function wrapWords(node){
+      if(node.nodeType === 3){ /* text node */
+        var parts = node.textContent.split(/(\s+)/);
+        var frag = document.createDocumentFragment();
+        parts.forEach(function(part){
+          if(part.trim() === ''){
+            frag.appendChild(document.createTextNode(part));
+          } else {
+            var span = document.createElement('span');
+            span.className = 'word-reveal';
+            span.style.animationDelay = (counter * delayStep) + 'ms';
+            span.textContent = part;
+            counter++;
+            frag.appendChild(span);
+          }
+        });
+        node.parentNode.replaceChild(frag, node);
+      } else if(node.nodeType === 1){
+        Array.prototype.slice.call(node.childNodes).forEach(wrapWords);
+      }
+    }
+    Array.prototype.slice.call(headline.childNodes).forEach(wrapWords);
+  })();
 
 
   /* scroll progress bar */
