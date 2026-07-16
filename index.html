@@ -35,7 +35,7 @@
 
   *{ box-sizing: border-box; }
   section + section{ margin-top: -1px; }
-  html{ scroll-behavior: smooth; }
+  html{ scroll-behavior: smooth; background: var(--navy-deep); }
   @media (prefers-reduced-motion: reduce){
     html{ scroll-behavior: auto; }
     *{ animation: none !important; }
@@ -1223,6 +1223,7 @@
     if(!(minTimeElapsed && pageLoaded)) return;
     preloaderHidden = true;
     preloader.classList.add('hidden');
+    revealHeroHeadline();
   }
   setTimeout(function(){ minTimeElapsed = true; hidePreloader(); }, 900);
   window.addEventListener('load', function(){ pageLoaded = true; hidePreloader(); });
@@ -1230,10 +1231,14 @@
     if(preloaderHidden || !preloader) return;
     preloaderHidden = true;
     preloader.classList.add('hidden');
+    revealHeroHeadline();
   }, 4000); /* safety net, always wins */
 
-  /* one-time word-by-word reveal for the hero headline */
-  (function(){
+  /* one-time word-by-word reveal for the hero headline, triggered once the preloader lifts */
+  var heroHeadlineRevealed = false;
+  function revealHeroHeadline(){
+    if(heroHeadlineRevealed) return;
+    heroHeadlineRevealed = true;
     var headline = document.getElementById('heroHeadline');
     if(!headline) return;
     var delayStep = 70; /* ms between words */
@@ -1260,7 +1265,7 @@
       }
     }
     Array.prototype.slice.call(headline.childNodes).forEach(wrapWords);
-  })();
+  }
 
 
   /* scroll progress bar */
